@@ -1,0 +1,50 @@
+class CustomStack {
+    int stk[];
+    int capacity;
+    int size;
+    int index;
+    public CustomStack(int maxSize) {
+        stk=new int[maxSize];
+        capacity=maxSize;
+        size=0;
+        index=-1;
+    }
+    
+    public void push(int x) {
+        if(isFull())
+            return;
+        index++;
+        stk[index]=x;
+        size++;
+    }
+    
+    public int pop() {
+        if(isEmpty())
+            return -1;
+        int x=stk[index];
+        index--;
+        size--;
+        return x;
+    }
+    
+    public void increment(int k, int val) {
+        int mini=Math.min(k,size);
+        for(int i=0;i<mini;i++){
+            stk[i]+=val;
+        }
+    }
+    public boolean isFull(){
+        return size==capacity;
+    }
+    public boolean isEmpty(){
+        return size==0;
+    }
+}
+
+/**
+ * Your CustomStack object will be instantiated and called as such:
+ * CustomStack obj = new CustomStack(maxSize);
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * obj.increment(k,val);
+ */
